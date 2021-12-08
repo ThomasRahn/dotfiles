@@ -6,12 +6,11 @@
 	name = Thomas Rahn
 	email = thomas.rahn@shopify.com
 [alias]
-  squash = !HEAD_COMMIT=$(git rev-list @ -n 1) BASE_COMMIT=$(git merge-base @ origin/master) && git reset --soft $BASE_COMMIT && git commit --reuse-message=$HEAD_COMMIT~$[$(git rev-list $BASE_COMMIT..$HEAD_COMMIT --count)-1] --edit
+  squash = !HEAD_COMMIT=$(git rev-list @ -n 1) BASE_COMMIT=$(git merge-base @ origin/main) && git reset --soft $BASE_COMMIT && git commit --reuse-message=$HEAD_COMMIT~$[$(git rev-list $BASE_COMMIT..$HEAD_COMMIT --count)-1] --edit
   br = branch
-  rom = "!git fetch origin master && git rebase origin/master"
+  rom = "!git fetch origin main && git rebase origin/main"
   co = checkout
   po = "!git push origin +\"$(git rev-parse --abbrev-ref HEAD)\""
   cl = "!git branch --no-contains $(git rev-list @ -n 1) --merged | xargs git br -d"
-  clb = "!CURRENT_BRANCH=\"$(git rev-parse --abbrev-ref HEAD)\" && git co master && git cl && git co $CURRENT_BRANCH"
-  ultraclean = !CURRENT_BRANCH=\"$(git rev-parse --abbrev-ref HEAD)\" && git co master && git from && git cl && git gc --aggressive && git prune && git co $CURRENT_BRANCH
-
+  clb = "!CURRENT_BRANCH=\"$(git rev-parse --abbrev-ref HEAD)\" && git co main && git cl && git co $CURRENT_BRANCH"
+  ultraclean = !CURRENT_BRANCH=\"$(git rev-parse --abbrev-ref HEAD)\" && git co main && git from && git cl && git gc --aggressive && git prune && git co $CURRENT_BRANCH
